@@ -1,3 +1,6 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.Functions.Worker;
@@ -15,9 +18,15 @@ public class FunctionValidaCPF
     }
 
     [Function("FunctionValidaCPF")]
-    public IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req)
+    public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "post")] HttpRequest req)
     {
-        _logger.LogInformation("C# HTTP trigger function processed a request.");
+        _logger.LogInformation("Iniciando a execução da função de validação de CPF");
+        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        var data =  JsonSerializer.Deserialize<ValidarCPFRequest>(requestBody);
+        if (data == null || string.IsNullOrWhiteSpace(data.CPF))
+        {
+            return new BadRequestObjectResult("Informar o CPF");
+        }
         return new OkObjectResult("Welcome to Azure Functions!");
     }
 }
