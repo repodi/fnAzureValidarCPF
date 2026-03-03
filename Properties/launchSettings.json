@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "fnAzureValidarCPF": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7197",
+      "launchBrowser": false
+    }
+  }
+}
