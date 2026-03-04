@@ -2,5 +2,5 @@ namespace Company.Function;
 
 public class ValidarCPFRequest
 {
-    public string CPF {get; set;}
+    public string? CPF {get; set;}
 }

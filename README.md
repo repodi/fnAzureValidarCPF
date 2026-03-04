@@ -90,21 +90,15 @@ http://localhost:7071/api/FunctionValidaCPF
 
 # 🧪 Testando a Function
 
-## GET (via curl)
-
-```bash
-curl http://localhost:7071/api/FunctionValidaCPF
-```
-
 ## POST (via curl)
 
 ```bash
 curl -X POST http://localhost:7071/api/FunctionValidaCPF \
      -H "Content-Type: application/json" \
-     -d '{"CPF":"123456"}'
+     -d '{"CPF":"2732632260"}'
 ```
 
-Você também pode testar via Postman ou navegador (para GET).
+Você também pode testar via Postman.
 
 ---
 
